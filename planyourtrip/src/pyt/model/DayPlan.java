@@ -6,15 +6,18 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class DayPlan {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name="dayplan_seq",sequenceName="dayplan_seq")
+	@GeneratedValue(generator="dayplan_seq",strategy=GenerationType.AUTO)
 	private Long id;
 	@ManyToOne
 	private Place place;

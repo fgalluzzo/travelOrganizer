@@ -1,32 +1,89 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>Insert title here</title>
+	<title>#{msg.title}</title>
 	<h:outputStylesheet library="css" name="style.css" />
-</h:head>
-<h:body>
-	<div id="page">
-		<div id="header">
-			HHH
-			<ui:insert name="header">
+	<f:loadBundle var="msg" basename="message"></f:loadBundle>
 
-			</ui:insert>
-		</div>
+</h:head>
+
+<h:body>
+
+	<div id="page">
+		<header class="ui-widget ui-widget-header">
+
+			<div id="header">
+				<div id="logo">
+					<h3>
+						<h:outputText value="#{msg.logo}"></h:outputText>
+					</h3>
+				</div>
+				<nav>
+					<p:button icon="ui-icon-home"></p:button>
+					<p:spacer width="10"></p:spacer>
+					<p:button icon="ui-icon-home"></p:button>
+					<p:spacer width="10"></p:spacer>
+					<p:button icon="ui-icon-home"></p:button>
+					<p:spacer width="10"></p:spacer>
+					<p:button icon="ui-icon-home"></p:button>
+					<p:spacer width="10"></p:spacer>
+					<p:button icon="ui-icon-home"></p:button>
+
+				</nav>
+				<div id="search">
+					<h:form>
+						<p:inputText value="Search" label="text" required="true"
+							onblur="if(this.value=='')this.value='Search'"
+							onfocus="this.value=''" />
+						<p:hotkey bind="enter"></p:hotkey>
+						<p:growl autoUpdate="true"></p:growl>
+					</h:form>
+
+				</div>
+				<div id="login">
+					<h:form>
+						<h:outputLink value="javascript:void(0)"  onclick="loginDlgwv.show()">
+							<h:outputText value="#{msg.signIn}"></h:outputText>
+						</h:outputLink>
+						<p:spacer width="10"></p:spacer>
+						<p:commandLink value="#{msg.joinUs}" action="signup"></p:commandLink>					
+					</h:form>
+				</div>
+			</div>
+
+		</header>
 		<div id="center">
-			AAA
+
 			<ui:insert name="content">
 			</ui:insert>
 		</div>
-		<div id="footer">
-			FFF
-			<ui:insert name="footer">
-			</ui:insert>
-		</div>
+		<footer>
+			<div id="footer">
+
+				<ui:insert name="footer">
+				</ui:insert>
+			</div>
+		</footer>
 	</div>
+	
+	<p:dialog id="loginDlg" header="#{msg.signIn}" widgetVar="loginDlgwv">
+		<h:form>
+			<h:panelGrid columns="2">
+				<h:outputLabel for="username" value="#{msg.username}"></h:outputLabel>
+				<p:inputText id="username" value="#{LoginMB.user.username}"></p:inputText>
+				
+				<h:outputLabel for="password" value="#{msg.password}"></h:outputLabel>
+				<p:password id="password" value="#{LoginMB.user.password}"></p:password>
+				
+				<p:commandButton value="#{msg.login}" action="#{LoginMB.login}" ></p:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
 </h:body>
 </html>

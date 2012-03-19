@@ -3,21 +3,25 @@ package pyt.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Attraction {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name="attraction_seq",sequenceName="attraction_seq")
+	@GeneratedValue(generator="attraction_seq",strategy=GenerationType.AUTO)	
 	protected Long id;
 	protected String name;
 	protected BigDecimal price;

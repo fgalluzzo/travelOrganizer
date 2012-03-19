@@ -45,6 +45,11 @@
 			<artifactId>mobile</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>hot-sneaks</artifactId>
+			<version>1.0.3</version>
+		</dependency>
 		<!-- jsf 2 -->
 		<dependency>
 			<groupId>org.glassfish</groupId>
@@ -101,6 +106,19 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901.jdbc4</version>
 		</dependency>
+		<!-- prettyfaces -->
+		<dependency>
+			<groupId>com.ocpsoft</groupId>
+			<artifactId>prettyfaces-jsf2</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+		<!-- log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
 	</dependencies>
 
 

@@ -2,14 +2,17 @@ package pyt.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 public class Review {
 
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name="review_seq",sequenceName="review_seq")
+	@GeneratedValue(generator="review_seq",strategy=GenerationType.AUTO)
 	private Long id;
 	private String review;
 	private Type type;

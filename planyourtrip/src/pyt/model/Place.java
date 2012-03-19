@@ -2,16 +2,19 @@ package pyt.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Place {
 	
 	@Id
-	@GeneratedValue
+	@SequenceGenerator(name="place_seq",sequenceName="place_seq")
+	@GeneratedValue(generator="place_seq",strategy=GenerationType.AUTO)
 	protected Long id;
 	protected String name;
 	protected String description;
