@@ -47,12 +47,15 @@
 
 				</div>
 				<div id="login">
-					<h:form>
+					<h:form rendered="#{!loginMB.isLogged}">
 						<h:outputLink value="javascript:void(0)"  onclick="loginDlgwv.show()">
 							<h:outputText value="#{msg.signIn}"></h:outputText>
 						</h:outputLink>
 						<p:spacer width="10"></p:spacer>
 						<p:commandLink value="#{msg.joinUs}" action="signup"></p:commandLink>					
+					</h:form>
+					<h:form rendered="#{loginMB.isLogged}">
+						<h:outputText value="#{loginMB.user.name}"></h:outputText>					
 					</h:form>
 				</div>
 			</div>

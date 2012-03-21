@@ -11,15 +11,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="usuario")
 public class User {
 
 	@Id
 	@SequenceGenerator(name="user_seq",sequenceName="user_seq")
 	@GeneratedValue(generator="user_seq",strategy=GenerationType.SEQUENCE)
 	private Long id;	
-	private String name;
+	private String name;	
 	@Column(unique=true)
 	private String username;
 	private String password;
