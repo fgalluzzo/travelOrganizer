@@ -54,17 +54,22 @@ nav {
 	padding: 10px 0 10px 0;
 }
 footer {
+	clear: both;
 	background-color:#E8E8E8;
 	width: 100%;	
 	min-height:70px;	
 }
 #footer {
+	clear: both;
 	width:1000px;
 	height:70px;
 	margin:  0 auto;
 }
 
 #center {
+	top:50px;	
+	position:relative;
+	border:solid thin red;
 	width: 1000px;
 	height: 80%;	
 	text-align: left;

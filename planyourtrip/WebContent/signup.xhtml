@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+	<title><h:outputText value="#{msg.title}"></h:outputText></title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<ui:composition template="template/index.xhtml">
+		<ui:define name="content">
+			<h:form>					
+				<p:panel header="#{msg.signupHeader}">
+					<h:panelGrid id="signupPanel" columns="3">
+
+						<h:outputLabel for="name" value="#{msg.fullname}"></h:outputLabel>
+						<p:inputText id="name" required="true" value="#{signupMB.user.name}"></p:inputText>
+						<p:message  for="name"></p:message>
+
+						<h:outputLabel for="email" value="#{msg.email}"></h:outputLabel>
+						<p:inputText id="email" required="true"  value="#{signupMB.user.email}"></p:inputText>
+						<p:message for="email"></p:message>
+
+						<h:outputLabel for="birthday" value="#{msg.birthday}"></h:outputLabel>
+						<p:calendar id="birthday"  navigator="true" yearRange="c-100:c" required="true" value="#{signupMB.user.birthday}"></p:calendar>
+						<p:message for="birthday"></p:message>
+
+						<h:outputLabel for="username" value="#{msg.username}"></h:outputLabel>
+						<p:inputText id="username" required="true" value="#{signupMB.user.username}"></p:inputText>
+						<p:message for="username"></p:message>
+
+						<h:outputLabel for="password" value="#{msg.password}"></h:outputLabel>
+						<p:password id="password" required="true" match="confirmation" feedback="true"
+							value="#{signupMB.user.password}"></p:password>
+						<p:message for="password"></p:message>
+
+						<h:outputLabel for="confirmation" value="#{msg.passwordconfirmation}"></h:outputLabel>
+						<p:password id="confirmation" required="true" value="#{signupMB.user.password}"></p:password>
+						<p:message for="confirmation"></p:message>
+
+					</h:panelGrid>
+					<p:commandButton update="signupPanel" value="#{msg.create}" action="#{signupMB.signup}"></p:commandButton>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

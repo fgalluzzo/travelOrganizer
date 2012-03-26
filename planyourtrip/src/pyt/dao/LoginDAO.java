@@ -15,6 +15,8 @@ public class LoginDAO {
 		try {
 			String jpql = "SELECT u FROM User u WHERE u.username = :username AND u.password = :password";
 			TypedQuery<User> query =  em.createQuery(jpql, User.class);
+			query.setParameter("username", user.getUsername());
+			query.setParameter("password", user.getPassword());
 			return query.getSingleResult();
 		}catch (NoResultException e) {
 			return null;

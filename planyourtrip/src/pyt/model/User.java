@@ -14,22 +14,25 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class User {
 
 	@Id
-	@SequenceGenerator(name="user_seq",sequenceName="user_seq")
-	@GeneratedValue(generator="user_seq",strategy=GenerationType.SEQUENCE)
-	private Long id;	
-	private String name;	
-	@Column(unique=true)
+	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
+	@GeneratedValue(generator = "user_seq", strategy = GenerationType.SEQUENCE)
+	private Long id;
+	private String name;
+	@Column(unique = true)
 	private String username;
 	private String password;
+	@Column(unique = true)
+	private String email;
 	private Calendar birthday;
 	@OneToMany(mappedBy = "reviewer")
 	private List<Review> reviews;
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY)
 	private List<Trip> trips;
+
 	public Long getId() {
 		return id;
 	}
@@ -84,6 +87,14 @@ public class User {
 
 	public void setTrips(List<Trip> trips) {
 		this.trips = trips;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

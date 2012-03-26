@@ -52,7 +52,7 @@
 							<h:outputText value="#{msg.signIn}"></h:outputText>
 						</h:outputLink>
 						<p:spacer width="10"></p:spacer>
-						<p:commandLink value="#{msg.joinUs}" action="signup"></p:commandLink>					
+						<p:commandLink ajax="false" value="#{msg.joinUs}" action="signup?faces-redirect=true"></p:commandLink>					
 					</h:form>
 					<h:form rendered="#{loginMB.isLogged}">
 						<h:outputText value="#{loginMB.user.name}"></h:outputText>					

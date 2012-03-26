@@ -13,11 +13,15 @@
    -->
    <url-mapping id="index">
    		<pattern value="/"></pattern>
-   		<view-id value="index.xhtml"/>
+   		<view-id value="/index.xhtml"/>
    </url-mapping>
    <url-mapping id="home">
    		<pattern value="/"></pattern>
-   		<view-id value="home.xhtml"/>
+   		<view-id value="/home.xhtml"/>
+   </url-mapping>
+   <url-mapping>
+   	<pattern value="/signup/"></pattern>
+   	<view-id value="/signup.xhtml"/>
    </url-mapping>
    <!-- Begin UrlMappings 
       // These are examples of URL mappings, and should be customized for your application.
