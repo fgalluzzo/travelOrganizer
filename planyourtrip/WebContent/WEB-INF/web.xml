@@ -15,7 +15,7 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
-	</filter-mapping>
+	</filter-mapping>	
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
@@ -30,7 +30,7 @@
 	</servlet-mapping>
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>hot-sneaks</param-value>
+		<param-value>ui-lightness</param-value>
 	</context-param>
-	
+
 </web-app>

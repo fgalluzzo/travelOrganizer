@@ -5,6 +5,7 @@ body {
 	padding: 0;
 	background: #FFFFFF;
 	text-align: center; /* hack para o IE */		
+	
 }
 
 #page {
@@ -13,10 +14,10 @@ body {
 }
 
 header {
+	
 	position:fixed;
 	width: 100%;
-	height: 50px;	
-	border: thin solid red;
+	height: 50px;		
 	
 }
 #header {
@@ -29,7 +30,11 @@ header {
 	float:left;	
 	width:200px;
 	text-align: left;	
-	height:50px;			
+	height:50px;	
+	
+}
+#logo a {
+	text-decoration: none;
 }
 #logo h3 {
 	font-style: oblique;
@@ -53,23 +58,22 @@ nav {
 	font-size: 12px;
 	padding: 10px 0 10px 0;
 }
-footer {
-	clear: both;
-	background-color:#E8E8E8;
+footer {	
+	position:absolute;
+	bottom:0px;		
+	background-color:#f5e2c1;
 	width: 100%;	
-	min-height:70px;	
+	min-height:70px;		
 }
-#footer {
-	clear: both;
+#footer {			
 	width:1000px;
 	height:70px;
 	margin:  0 auto;
 }
 
 #center {
-	top:50px;	
 	position:relative;
-	border:solid thin red;
+	top:50px;			
 	width: 1000px;
 	height: 80%;	
 	text-align: left;
@@ -79,5 +83,8 @@ footer {
 	padding: 10px;
 	text-align: left;
 	
-	
+}
+.centeredPanelGrid{
+	margin: 0 auto;	
+	width:300px;	
 }

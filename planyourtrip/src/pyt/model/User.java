@@ -1,6 +1,8 @@
 package pyt.model;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "usuario")
@@ -32,6 +35,10 @@ public class User {
 	private List<Review> reviews;
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Trip> trips;
+	
+	@Transient
+	private Date birthdayDate;
+	
 
 	public Long getId() {
 		return id;
@@ -95,6 +102,15 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Date getBirthdayDate() {
+		return birthday == null?null:birthday.getTime();		
+	}
+
+	public void setBirthdayDate(Date birthdayDate) {
+		birthday = new GregorianCalendar();
+		birthday.setTime(birthdayDate);
 	}
 
 }

@@ -50,6 +50,12 @@
 			<artifactId>hot-sneaks</artifactId>
 			<version>1.0.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>ui-lightness</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
 		<!-- jsf 2 -->
 		<dependency>
 			<groupId>org.glassfish</groupId>

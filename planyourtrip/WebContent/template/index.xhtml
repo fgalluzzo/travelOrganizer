@@ -21,7 +21,9 @@
 			<div id="header">
 				<div id="logo">
 					<h3>
-						<h:outputText value="#{msg.logo}"></h:outputText>
+						<h:outputLink value="/index.xhtml">
+							<h:outputText value="#{msg.logo}"></h:outputText>
+						</h:outputLink>
 					</h3>
 				</div>
 				<nav>
@@ -42,21 +44,25 @@
 							onblur="if(this.value=='')this.value='Search'"
 							onfocus="this.value=''" />
 						<p:hotkey bind="enter"></p:hotkey>
-						<p:growl autoUpdate="true"></p:growl>
 					</h:form>
 
 				</div>
 				<div id="login">
-					<h:form rendered="#{!loginMB.isLogged}">
-						<h:outputLink value="javascript:void(0)"  onclick="loginDlgwv.show()">
-							<h:outputText value="#{msg.signIn}"></h:outputText>
-						</h:outputLink>
-						<p:spacer width="10"></p:spacer>
-						<p:commandLink ajax="false" value="#{msg.joinUs}" action="signup?faces-redirect=true"></p:commandLink>					
+					<h:form>
+						<p:outputPanel rendered="#{!LoginMB.logged}">
+							<h:outputLink value="javascript:void(0)"
+								onclick="loginDlgwv.show()">
+								<h:outputText value="#{msg.signIn}"></h:outputText>
+							</h:outputLink>
+							<p:spacer width="10"></p:spacer>
+							<p:commandLink ajax="false" value="#{msg.joinUs}"
+								action="signup?faces-redirect=true"></p:commandLink>
+						</p:outputPanel>
+						<p:outputPanel rendered="#{LoginMB.logged}">
+							<h:outputText value="#{LoginMB.user.name}"></h:outputText>
+						</p:outputPanel>
 					</h:form>
-					<h:form rendered="#{loginMB.isLogged}">
-						<h:outputText value="#{loginMB.user.name}"></h:outputText>					
-					</h:form>
+
 				</div>
 			</div>
 
@@ -74,17 +80,19 @@
 			</div>
 		</footer>
 	</div>
-	
-	<p:dialog id="loginDlg" header="#{msg.signIn}" widgetVar="loginDlgwv">
+	<p:dialog draggable="false" modal="true" resizable="false"
+		id="loginDlg" header="#{msg.signIn}" widgetVar="loginDlgwv">
 		<h:form>
 			<h:panelGrid columns="2">
 				<h:outputLabel for="username" value="#{msg.username}"></h:outputLabel>
-				<p:inputText id="username" value="#{LoginMB.user.username}"></p:inputText>
-				
+				<p:inputText id="username" required="true"
+					value="#{LoginMB.username}"></p:inputText>
+
 				<h:outputLabel for="password" value="#{msg.password}"></h:outputLabel>
-				<p:password id="password" value="#{LoginMB.user.password}"></p:password>
-				
-				<p:commandButton value="#{msg.login}" action="#{LoginMB.login}" ></p:commandButton>
+				<p:password id="password" required="true"
+					value="#{LoginMB.password}"></p:password>
+
+				<p:commandButton value="#{msg.login}" action="#{LoginMB.login}"></p:commandButton>
 			</h:panelGrid>
 		</h:form>
 	</p:dialog>

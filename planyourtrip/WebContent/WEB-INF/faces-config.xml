@@ -5,5 +5,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
     version="2.0">
-
+	<lifecycle>
+		<phase-listener>pyt.auth.filter.LoggedUserFilter</phase-listener>
+	</lifecycle>
+	
+	<validator >
+		<validator-id>userExistsValidator</validator-id>
+		<validator-class>pyt.validator.user.UserExistsValidator</validator-class>		
+	</validator>
+	<validator >
+		<validator-id>validEmailValidator</validator-id>
+		<validator-class>pyt.validator.user.ValidEmailValidator</validator-class>		
+	</validator>
+	
 </faces-config>

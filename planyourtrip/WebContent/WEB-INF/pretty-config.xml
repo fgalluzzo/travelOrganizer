@@ -12,15 +12,15 @@
 
    -->
    <url-mapping id="index">
-   		<pattern value="/"></pattern>
+   		<pattern value="/"></pattern>   		
    		<view-id value="/index.xhtml"/>
    </url-mapping>
    <url-mapping id="home">
-   		<pattern value="/"></pattern>
+   		<pattern value="/home"></pattern>
    		<view-id value="/home.xhtml"/>
    </url-mapping>
-   <url-mapping>
-   	<pattern value="/signup/"></pattern>
+   <url-mapping id="signup">
+   	<pattern value="/signup"></pattern>
    	<view-id value="/signup.xhtml"/>
    </url-mapping>
    <!-- Begin UrlMappings 
