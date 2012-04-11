@@ -88,3 +88,10 @@ footer {
 	margin: 0 auto;	
 	width:300px;	
 }
+.centeredPanelGrid .formlabel {
+	font-size: 12px;
+}
+.overlayNotifications {
+	width: 1000px;
+	background-color: fuchsia;	
+}

@@ -15,6 +15,11 @@ public class LoggedUserFilter implements PhaseListener {
 
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6185131486473677931L;
+
 	@Override
 	public void afterPhase(PhaseEvent event) {
 		FacesContext ctx = FacesContext.getCurrentInstance();
@@ -29,11 +34,11 @@ public class LoggedUserFilter implements PhaseListener {
 		
 		if(!loginMB.isLogged() && (!viewId.contains(PageNames.LOGIN_PAGE) && !viewId.contains(PageNames.SIGNUP_PAGE))) {
 			
-			handler.handleNavigation(ctx, null, PageNames.LOGIN_PAGE);
+			handler.handleNavigation(ctx, null, PageNames.LOGIN_PAGE+"?faces-redirect=true");
 			loginMB.setLastPage(viewId);
 		} else {
 			if(loginMB.isLogged() && (viewId.contains(PageNames.LOGIN_PAGE) || viewId.contains(PageNames.SIGNUP_PAGE))) {
-				handler.handleNavigation(ctx, null, PageNames.HOME_PAGE);
+				handler.handleNavigation(ctx, null, PageNames.HOME_PAGE+"?faces-redirect=true");
 			}
 		}
 	}

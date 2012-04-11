@@ -13,7 +13,6 @@ import javax.persistence.PersistenceException;
 import org.apache.log4j.Logger;
 
 import pyt.auth.hash.CriaHash;
-import pyt.dao.UserDAO;
 import pyt.model.User;
 import pyt.util.JPAUtil;
 import pyt.util.MessageUtil;

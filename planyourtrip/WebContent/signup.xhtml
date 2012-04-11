@@ -9,61 +9,82 @@
 	<meta charset="UTF-8" />
 	<title><h:outputText value="#{msg.title}"></h:outputText></title>
 	<h:outputStylesheet library="css" name="style.css" />
+
 </h:head>
 <h:body>
+
 	<ui:composition template="template/index.xhtml">
 		<ui:define name="content">
-			<h:form>
-				<p:growl id="growl"></p:growl>
-				<p:notificationBar id="notification"  widgetVar="nBar">
-					<p:message for="notification"></p:message>
-				</p:notificationBar>
-				<p:panel>
+			<h:outputScript name="mask.js" target="head" library="js"></h:outputScript>
+			<h:outputScript name="datemask.js" target="head" library="js"></h:outputScript>
+			<h:form id="frmSignup" prependId="false">
 
+				<p:panel id="pnl">
+					<p:overlayPanel dynamic="true" showEffect="slide" hideEffect="hide"
+						styleClass="overlayNotifications" for="pnl" my="left bottom"
+						at="left top" widgetVar="notificationPanel">
+						<p:messages></p:messages>
+					</p:overlayPanel>
+					<script type="text/javascript">
+						jQuery(function($) {
+							$("#birthday_input").mask("99/99/9999", {
+								placeholder : " "
+							});
+						});
+					</script>
+					<p:focus id="pfocus" context="pnl" minSeverity="warn"></p:focus>
 					<h:panelGrid id="signupPanel" columns="3">
 
+
 						<h:outputLabel for="name" value="#{msg.fullname}"></h:outputLabel>
+
 						<p:inputText id="name" required="true"
-							requiredMessage="#{msg.fieldRequired}" 
-							value="#{signupMB.user.name}"></p:inputText>
-						<p:message for="name"></p:message>
+							requiredMessage="#{msg.fieldRequired}"
+							value="#{signupMB.user.name}">
+						</p:inputText>
+						<p:message for="name" />
 
 						<h:outputLabel for="email" value="#{msg.email}"></h:outputLabel>
 						<p:inputText id="email" required="true"
-							requiredMessage="#{msg.fieldRequired}" validator="validEmailValidator"
-							value="#{signupMB.user.email}"></p:inputText>
+							requiredMessage="#{msg.fieldRequired}"
+							validator="validEmailValidator" value="#{signupMB.user.email}">
+						</p:inputText>
 						<p:message for="email"></p:message>
 
 						<h:outputLabel for="birthday" value="#{msg.birthday}"></h:outputLabel>
 						<p:calendar id="birthday" navigator="true" yearRange="c-100:c"
-							requiredMessage="#{msg.fieldRequired}" required="true"
-							value="#{signupMB.user.birthdayDate}"></p:calendar>
+							requiredMessage="#{msg.fieldRequired}" pattern="dd/mm/yyyy"
+							required="true" value="#{signupMB.user.birthdayDate}">
+						</p:calendar>
 						<p:message for="birthday"></p:message>
 
+
 						<h:outputLabel for="username" value="#{msg.username}"></h:outputLabel>
-						<p:inputText id="username" required="true" validator="userExistsValidator"
+						<p:inputText id="username" required="true"
+							validator="userExistsValidator"
 							requiredMessage="#{msg.fieldRequired}"
-							value="#{signupMB.user.username}"></p:inputText>
+							value="#{signupMB.user.username}">
+						</p:inputText>
 						<p:message for="username"></p:message>
 
 						<h:outputLabel for="password" value="#{msg.password}"></h:outputLabel>
-						<p:password label="#{msg.password}" id="password" required="true" match="confirmation"
-							requiredMessage="#{msg.fieldRequired}" feedback="true" 
-							value="#{signupMB.user.password}"></p:password>
+						<p:password label="#{msg.password}" id="password" required="true"
+							match="confirmation" requiredMessage="#{msg.fieldRequired}"
+							feedback="true" value="#{signupMB.user.password}">
+						</p:password>
 						<p:message for="password"></p:message>
 
 						<h:outputLabel for="confirmation"
 							value="#{msg.passwordconfirmation}"></h:outputLabel>
-						<p:password label="#{msg.passwordconfirmation}" id="confirmation" required="true"
-							requiredMessage="#{msg.fieldRequired}"
-							value="#{signupMB.user.password}"></p:password>
+						<p:password label="#{msg.passwordconfirmation}" id="confirmation"
+							required="true" requiredMessage="#{msg.fieldRequired}"
+							value="#{signupMB.user.password}">
+						</p:password>
 						<p:message for="confirmation"></p:message>
 
-					</h:panelGrid> 
-						
-					<p:commandButton  update="signupPanel,notification" onsuccess="nBar.show" value="#{msg.create}"					
-						action="#{signupMB.signup}">	
-						<p:ajax onsuccess="growl"></p:ajax>									
+					</h:panelGrid>					
+					<p:commandButton update="signupPanel,pfocus" value="#{msg.create}"
+						oncomplete="notificationPanel.show()"  action="#{signupMB.signup}">
 					</p:commandButton>
 				</p:panel>
 

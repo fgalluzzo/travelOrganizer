@@ -9,7 +9,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 
-import pyt.auth.Authenticate;
 import pyt.auth.hash.CriaHash;
 import pyt.constants.PageNames;
 import pyt.dao.LoginDAO;
@@ -62,9 +61,10 @@ public class LoginMB {
 		return "index";
 	}
 
-	public void logout() {
-		Authenticate.logout(this.user);
+	public String logout() {		
 		this.user = new User();
+		logged = false;
+		return "index?faces-redirect=true";
 	}
 
 	public User getUser() {
