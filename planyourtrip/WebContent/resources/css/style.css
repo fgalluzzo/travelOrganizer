@@ -82,6 +82,7 @@ footer {
 	margin: 0 auto;
 	padding: 10px;
 	text-align: left;
+	font-size: 12px;
 	
 }
 .centeredPanelGrid{
@@ -94,4 +95,20 @@ footer {
 .overlayNotifications {
 	width: 1000px;
 	background-color: fuchsia;	
+}
+#slidingPanel {
+	display: none;
+	width: 1000px;
+	height: 30px;
+	background-color: #61f61e;	
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	position: absolute;
+	float:left;	
+	z-index: 1;
+	opacity:0.65;
+	-moz-opacity: 0.65;
+	filter: alpha(opacity=65);
+	font-weight: bold;
+	color: black;	
 }

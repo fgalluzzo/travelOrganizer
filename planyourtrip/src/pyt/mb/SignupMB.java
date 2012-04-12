@@ -23,52 +23,45 @@ public class SignupMB {
 
 	private Logger logger = Logger.getLogger("Signup Log");
 	private User user;
+	private boolean success = false;
+	private String msg;
 
 	public SignupMB() {
 		user = new User();
 	}
 
-	public void signup() {
-		FacesMessage message = null;
+	public void signup() {	
 		EntityManager em = null;
-		
-		try {
-			em = new JPAUtil().getEntityManager();			
+
+		try {		
+			em = new JPAUtil().getEntityManager();
 
 			em.getTransaction().begin();
 
 			user.setPassword(CriaHash.SHA1(user.getPassword()));
 
 			em.persist(user);
-			message = new FacesMessage(FacesMessage.SEVERITY_INFO,
-					MessageUtil.getProperty("succesUserRegister"),
-					MessageUtil.getProperty("succesUserRegister"));
 
 			em.getTransaction().commit();
+			msg= MessageUtil.getProperty("succesUserRegister");
+			success = true;
 
 		} catch (NoSuchAlgorithmException e) {
-			message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					MessageUtil.getProperty("errorSignup"),
-					MessageUtil.getProperty("errorSignup"));
+			msg= MessageUtil.getProperty("errorSignup");
 			logger.error(MessageUtil.getProperty("errorSignup")
 					+ " stackTrace: " + e.getMessage());
 
 		} catch (UnsupportedEncodingException e) {
-			message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					MessageUtil.getProperty("errorSignup"),
-					MessageUtil.getProperty("errorSignup"));
+			msg= MessageUtil.getProperty("errorSignup");
 			logger.error(MessageUtil.getProperty("errorSignup")
 					+ " stackTrace: " + e.getMessage());
 
 		} catch (PersistenceException e) {
-			message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					MessageUtil.getProperty("errorSignup"),
-					MessageUtil.getProperty("errorSignup"));
+			msg= MessageUtil.getProperty("errorSignup");
 			logger.error(MessageUtil.getProperty("errorSignup")
 					+ " stackTrace: " + e.getMessage());
 		} finally {
-			em.close();
-			FacesContext.getCurrentInstance().addMessage(null, message);
+			em.close();			
 			user = new User();
 		}
 
@@ -80,5 +73,21 @@ public class SignupMB {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+	public void setSuccess(boolean success) {
+		this.success = success;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 }
